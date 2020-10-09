@@ -17,7 +17,6 @@ public class LogsPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"PlayerInstancesPage\"]/div/ul/li[*]/dl/dd[1]/div")
     private List<WebElement> listWebOnlineType;
 
-
     @FindBy(xpath = "//*[@id=\"PlayerInstancesPage\"]/div/ul/li[1]/dl/dd[4]/time[1]")
     private WebElement firstWebLastSeenTime;
     @FindBy(xpath = "//*[@id=\"PlayerInstancesPage\"]/div/ul/li[10]/dl/dd[4]/time[1]")
@@ -34,8 +33,8 @@ public class LogsPage extends BasePage {
     }
 
     private List<Logs> logs = new ArrayList<Logs>();
-    public List<Logs> getLogs() { return logs; }
 
+    public List<Logs> getLogs() { return logs; }
 
     public void enterPage(String text) {
         driver.get("https://www.battlemetrics.com/servers/rust/" + text + "/players?sort=-lastSeen"); }
@@ -61,8 +60,7 @@ public class LogsPage extends BasePage {
 
             logs.addAll(createList(listWebPlayerNames, listWebLastSeenTimes, listWebOnlineType));
         }
-        return logs;
-    }
+        return logs; }
 
     private Logs parseLog(WebElement webPlayerName, WebElement webLastSeenTimes, WebElement webOnlineType) throws ParseException {
         String playerID = parseWebElementToPlayerId(webPlayerName);
@@ -71,15 +69,14 @@ public class LogsPage extends BasePage {
         String onlineType = webOnlineType.getAttribute("class");
         String recordID = playerID + "_" + ((parseStringTimeToLongTime(lastSeenTime)));
 
-        return new Logs(recordID, playerID, playerName, lastSeenTime, onlineType);
-    }
+        return new Logs(recordID, playerID, playerName, lastSeenTime, onlineType); }
 
     private List<Logs> createList(List<WebElement> listWebPlayerNames, List<WebElement> listWebLastSeenTimes, List<WebElement> listWebOnlineType) throws ParseException {
         List<Logs> list = new ArrayList<>();
         for (int i = 0; i < listWebPlayerNames.size(); i++) {
             Logs LL = parseLog(listWebPlayerNames.get(i), listWebLastSeenTimes.get(i), listWebOnlineType.get(i));
-            list.add(LL);
-        }return list; }
+            list.add(LL); }
+        return list; }
 
 }
 

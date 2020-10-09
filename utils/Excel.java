@@ -19,7 +19,7 @@ public class Excel {
     public static CreationHelper createHelper;
     public static int i;
 
-public static void variables(){
+/*public static void variables(){
       File file;
       FileInputStream inputStream;
       FileOutputStream outputStream;
@@ -30,7 +30,7 @@ public static void variables(){
       CreationHelper createHelper;
       int i;
 
-}
+}*/
 
 
 

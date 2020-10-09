@@ -21,11 +21,12 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
         action = new Actions(driver);
     }
-    public static String parseWebElementToPlayerId(WebElement w) {
+
+    public String parseWebElementToPlayerId(WebElement w) {
         return w.getAttribute("href").substring(38);
     }
 
-    public static String parseWebTimetoStringTime(WebElement webTime) {
+    public String parseWebTimetoStringTime(WebElement webTime) {
         return (webTime.getAttribute("datetime").substring(0, 10).replace('-', '.')
                 + " " + webTime.getAttribute("datetime").substring(11, 19)); }
 
@@ -34,7 +35,7 @@ public abstract class BasePage {
         simpleDateFormat.applyPattern("yyyy.MM.dd HH:mm:ss");
         return simpleDateFormat.parse(stringTime); }
 
-    public static Long parseStringTimeToLongTime(String stringTime) throws ParseException {
+    public Long parseStringTimeToLongTime(String stringTime) throws ParseException {
         return (parseStringToDate(stringTime)).getTime(); }
 
 }
