@@ -49,7 +49,7 @@ public class LogsExcel {
             listRecordID.add(recordID);
         }*/
 
-        deleteDuplicatesFromLogs(logs, listRecordID);
+        logs=deleteDuplicatesFromLogs(logs, listRecordID);
         /*deleteDuplicatesFromLogs:
         logs = logs.stream().filter(log -> !listRecordID.contains(log.getRecordID())).collect(Collectors.toList());
 */
