@@ -1,6 +1,8 @@
 package battlemetrics_rust.excel;
 
 import battlemetrics_rust.model.Logs;
+import battlemetrics_rust.pages.LogsPage;
+import battlemetrics_rust.utils.Excel;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
@@ -11,20 +13,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static battlemetrics_rust.model.LogsDAO.createListLogs;
+//import static battlemetrics_rust.model.LogsDAO.createListLogs;
 import static battlemetrics_rust.pages.BasePage.parseStringToDate;
 
-public class LogsExcel extends BaseExcel {
+import static battlemetrics_rust.utils.Excel.*;
 
-    public void insertLogs() throws ParseException, IOException {
+public class LogsExcel  {
+    private LogsPage logsPage = new LogsPage();
 
-        readOrCreateFile();
+    public void insertLogs(String serverID) throws ParseException, IOException {
+
+        readOrCreateFile("C:/battlemetrics/" + serverID + ".xls");
+        variables();
 
         cellStyle = workbook.createCellStyle();
         createHelper = workbook.getCreationHelper();
         cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("d MMM HH:mm"));
 
-        List<Logs> logs = createListLogs();
+
+//        List<Logs> logs = createListLogs2();
+//        List<Logs> logs = logsPage.parseWebListsToStringLists();
+        List<Logs> logs = logsPage.parseWebListsToStringLists();
+        System.out.println(logs.size());
+        System.out.println(logs);
 
         List<String> listRecordID = new ArrayList<String>();
         getListRecordID:

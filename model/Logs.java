@@ -1,7 +1,7 @@
 package battlemetrics_rust.model;
 
 public class Logs {
-    private String recordID, playerID, playerName, lastSeenTime, onlineType;
+    private final String recordID, playerID, playerName, lastSeenTime, onlineType;
 
     public Logs(String recordID, String playerID, String playerName, String lastSeenTime, String onlineType) {
         this.recordID = recordID;

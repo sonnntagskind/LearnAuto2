@@ -1,3 +1,4 @@
+/*
 package battlemetrics_rust.model;
 
 import java.text.ParseException;
@@ -11,23 +12,33 @@ public class LogsDAO {
     private static List<String> listLastSeenTimes = getListLastSeenTimes();
     private static List<String> listPlayerNames = getListPlayerNames();
     private static List<String> listOnlineType = getListOnlineType();
-    private static List<String> listRecordID = new ArrayList<String>();
-    private static List<Logs> logs = new ArrayList<Logs>();
+//    private static List<String> listRecordID = new ArrayList<String>();
+//    private static List<Logs> logs = new ArrayList<Logs>();
 
-    public static List<String> createListRecordID() throws ParseException {
+    public static List<String> createListRecordID(List<String> listPlayerID, List<String> listLastSeenTimes, List<String> listRecordID) throws ParseException {
 
         for (int i = 0; i < listPlayerID.toArray().length; i++) {
             String string = (listPlayerID.get(i) + "_"
                     + String.valueOf((parseStringTimeToLongTime(listLastSeenTimes.get(i)))));
-            listRecordID.add(string); }
-        return listRecordID; }
+            listRecordID.add(string);
+        }
+        return listRecordID;
+    }
 
     public static List<Logs> createListLogs() throws ParseException {
-        createListRecordID();
+        List<Logs> logs = new ArrayList<Logs>();
+        List<String> listRecordID = new ArrayList<String>();
+        logs.clear();
+        listRecordID.clear();
+
+        createListRecordID(listPlayerID, listLastSeenTimes, listRecordID);
 
         for (int i = 0; i < listRecordID.toArray().length; i++) {
             Logs LL = new Logs(listRecordID.get(i), listPlayerID.get(i),
                     listPlayerNames.get(i), listLastSeenTimes.get(i), listOnlineType.get(i));
-            logs.add(LL); }
-        return logs; }
+            logs.add(LL);
+        }
+        return logs;
+    }
 }
+*/

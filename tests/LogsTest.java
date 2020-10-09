@@ -11,10 +11,10 @@ public class LogsTest extends BaseTest {
     public void start(String serverID) throws ParseException, IOException {
 
         logsSteps
-                ._enterPage(serverID)
-                ._printStatistics()
-                ._parseWebListsToStringLists()
-                ._writeExcel()
+                .enterPage(serverID)
+                .printStatistics()
+//                .parseWebListsToStringLists()
+                .writeExcel(serverID)
         ;
     }
 }

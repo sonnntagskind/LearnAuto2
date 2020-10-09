@@ -11,20 +11,19 @@ public class LogsSteps {
     private LogsPage logsPage = new LogsPage();
     private LogsExcel logsExcel = new LogsExcel();
 
-    public LogsSteps _enterPage(String text) {
+    public LogsSteps enterPage(String text) {
         logsPage.enterPage(text);
         return this; }
 
-    public LogsSteps _printStatistics() {
+    public LogsSteps printStatistics() {
         logsPage.printStatistics();
         return this; }
 
-    public LogsSteps _parseWebListsToStringLists() throws ParseException {
+    public LogsSteps parseWebListsToStringLists() throws ParseException {
         logsPage.parseWebListsToStringLists();
         return this; }
 
-    public LogsSteps _writeExcel() throws ParseException, IOException {
-        logsExcel.insertLogs();
+    public LogsSteps writeExcel(String serverID) throws ParseException, IOException {
+        logsExcel.insertLogs(serverID);
         return this; }
-
 }

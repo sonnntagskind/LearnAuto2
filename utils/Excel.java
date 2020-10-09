@@ -1,4 +1,4 @@
-package battlemetrics_rust.excel;
+package battlemetrics_rust.utils;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -8,19 +8,36 @@ import org.apache.poi.ss.usermodel.CreationHelper;
 
 import java.io.*;
 
-public abstract class BaseExcel {
-    File file;
-    FileInputStream inputStream;
-    FileOutputStream outputStream;
-    HSSFWorkbook workbook;
-    HSSFSheet sheet;
-    HSSFCell cell;
-    CellStyle cellStyle;
-    CreationHelper createHelper;
-    int i;
+public class Excel {
+    public static File file;
+    public static FileInputStream inputStream;
+    public static FileOutputStream outputStream;
+    public static HSSFWorkbook workbook;
+    public static HSSFSheet sheet;
+    public static HSSFCell cell;
+    public static CellStyle cellStyle;
+    public static CreationHelper createHelper;
+    public static int i;
 
-    public void readOrCreateFile(String fileServerID) throws IOException {
-        file = new File(fileServerID);
+public static void variables(){
+      File file;
+      FileInputStream inputStream;
+      FileOutputStream outputStream;
+      HSSFWorkbook workbook;
+      HSSFSheet sheet;
+      HSSFCell cell;
+      CellStyle cellStyle;
+      CreationHelper createHelper;
+      int i;
+
+}
+
+
+
+    public static void readOrCreateFile(String filePath) throws IOException {
+
+        file = new File(filePath);
+
         if (file.exists()){
             inputStream = new FileInputStream(file);
             workbook = new HSSFWorkbook(inputStream);
@@ -39,7 +56,7 @@ public abstract class BaseExcel {
         }
     }
 
-    public void writeFile() throws IOException {
+    public static void writeFile() throws IOException {
         if (inputStream!=null){inputStream.close();}
         outputStream = new FileOutputStream(file);
         workbook.write(outputStream);
