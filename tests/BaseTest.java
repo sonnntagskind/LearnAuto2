@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseTest {
+public abstract class BaseTest  {
 
     private static WebDriver driver;
 
@@ -21,9 +21,12 @@ public abstract class BaseTest {
         return driver;
     }
 
+    DriverFactory driverFactory=new DriverFactory();
+    PropertyReader propertyReader =new PropertyReader();
+
     @BeforeClass
     public void setup() throws IOException {
-        driver = DriverFactory.getDriver(PropertyReader.getBrowser());
+        driver = driverFactory.getDriver(propertyReader.getBrowser());
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         logsSteps = new LogsSteps(); }
 

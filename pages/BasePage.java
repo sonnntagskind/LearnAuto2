@@ -1,5 +1,6 @@
 package battlemetrics_rust.pages;
 
+import battlemetrics_rust.tests.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -30,13 +31,13 @@ public abstract class BasePage {
         return (webTime.getAttribute("datetime").substring(0, 10).replace('-', '.')
                 + " " + webTime.getAttribute("datetime").substring(11, 19)); }
 
-    public static Date parseStringToDate(String stringTime) throws ParseException {
+    /*public static Date parseStringToDate(String stringTime) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         simpleDateFormat.applyPattern("yyyy.MM.dd HH:mm:ss");
         return simpleDateFormat.parse(stringTime); }
 
     public Long parseStringTimeToLongTime(String stringTime) throws ParseException {
-        return (parseStringToDate(stringTime)).getTime(); }
+        return (parseStringToDate(stringTime)).getTime(); }*/
 
 }
 

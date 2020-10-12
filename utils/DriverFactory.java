@@ -8,10 +8,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import java.io.File;
 
 public class DriverFactory {
-    private static WebDriver driver;
-    private final static String DRIVER_PATH = "src/test/resources/";
+    private WebDriver driver;
+    private final String DRIVER_PATH = "src/test/resources/";
 
-    public static WebDriver getDriver(Browser browser) {
+    public WebDriver getDriver(Browser browser) {
         File file;
         switch (browser) {
             case CHROME:

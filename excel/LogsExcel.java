@@ -3,6 +3,8 @@ package battlemetrics_rust.excel;
 import battlemetrics_rust.model.Logs;
 import battlemetrics_rust.pages.BasePage;
 import battlemetrics_rust.pages.LogsPage;
+import battlemetrics_rust.steps.LogsSteps;
+import battlemetrics_rust.utils.DateUtil;
 import battlemetrics_rust.utils.Excel;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,14 +13,15 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static battlemetrics_rust.pages.BasePage.parseStringToDate;
+//import static battlemetrics_rust.pages.BasePage.parseStringToDate;
 
 import static battlemetrics_rust.utils.Excel.*;
 
-public class LogsExcel {
+public class LogsExcel extends Excel {
     private LogsPage logsPage = new LogsPage();
     private List<String> listRecordID = new ArrayList<String>();
     private List<Logs> logs = new ArrayList<Logs>();
@@ -26,11 +29,21 @@ public class LogsExcel {
     private List<Logs> logsOnline = new ArrayList<Logs>();
     private List<String> listPlayerID = new ArrayList<String>();
 
+    private DateUtil dateUtil = new DateUtil();
+    private Date parseStringToDate(String stringTime) throws ParseException {
+        return dateUtil.parseStringToDate(stringTime); }
+//    private Excel Excel = new Excel();
+
+    /*private void readOrCreateFile(String filePath) throws IOException {
+        new Excel().readOrCreateFile(filePath); }
+    private void writeFile() throws IOException {
+        new Excel().writeFile(); }*/
+
 
     public void insertLogs(String serverID) throws ParseException, IOException {
 
         readOrCreateFile("C:/battlemetrics/" + serverID + ".xls");
-//        variables();
+//        new Excel().vars();
 
         cellStyle = workbook.createCellStyle();
         createHelper = workbook.getCreationHelper();
@@ -49,7 +62,7 @@ public class LogsExcel {
             listRecordID.add(recordID);
         }*/
 
-        logs=deleteDuplicatesFromLogs(logs, listRecordID);
+        logs = deleteDuplicatesFromLogs(logs, listRecordID);
         /*deleteDuplicatesFromLogs:
         logs = logs.stream().filter(log -> !listRecordID.contains(log.getRecordID())).collect(Collectors.toList());
 */

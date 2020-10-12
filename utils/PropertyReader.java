@@ -7,15 +7,15 @@ import java.util.Properties;
 
 public class PropertyReader {
 
-    public static String getUrl() {
+    public  String getUrl() {
         return getProperty("url");
     }
 
-    public static battlemetrics_rust.utils.Browser getBrowser() {
+    public  battlemetrics_rust.utils.Browser getBrowser() {
         return Browser.valueOf(getProperty("browser"));
     }
 
-    private static String getProperty(String propertyName) {
+    private  String getProperty(String propertyName) {
         if (System.getProperty(propertyName) == null) {
             return getPropertyFromFile(propertyName);
         } else {
@@ -23,7 +23,7 @@ public class PropertyReader {
         }
     }
 
-    private static String getPropertyFromFile(String propertyName) {
+    private  String getPropertyFromFile(String propertyName) {
         Properties prop = new Properties();
         InputStream input = null;
         try {

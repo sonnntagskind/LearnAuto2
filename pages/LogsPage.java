@@ -1,14 +1,19 @@
 package battlemetrics_rust.pages;
 
 import battlemetrics_rust.model.Logs;
+import battlemetrics_rust.utils.DateUtil;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LogsPage extends BasePage {
+
+    private Long parseStringTimeToLongTime(String stringTime) throws ParseException {
+        return new DateUtil().parseStringTimeToLongTime(stringTime); }
 
     @FindBy(xpath = "//*[@id=\"PlayerInstancesPage\"]/div/ul/li[*]/p/a")
     private List<WebElement> listWebPlayerNames;
