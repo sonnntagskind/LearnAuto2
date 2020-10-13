@@ -8,8 +8,10 @@ public class DateUtil {
     public Date parseStringToDate(String stringTime) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         simpleDateFormat.applyPattern("yyyy.MM.dd HH:mm:ss");
-        return simpleDateFormat.parse(stringTime); }
+        return simpleDateFormat.parse(stringTime);
+    }
 
     public Long parseStringTimeToLongTime(String stringTime) throws ParseException {
-        return (parseStringToDate(stringTime)).getTime(); }
+        return (parseStringToDate(stringTime)).getTime();
+    }
 }

@@ -15,8 +15,8 @@ public class LogsSteps {
         logsPage.enterPage(text);
         return this; }
 
-    public LogsSteps printStatistics() {
-        logsPage.printStatistics();
+    public LogsSteps printServiceInfo() {
+        logsPage.printServiceInfo();
         return this; }
 
     public LogsSteps parseWebListsToStringLists() throws ParseException {

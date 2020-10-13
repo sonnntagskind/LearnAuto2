@@ -8,27 +8,27 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseTest  {
+public abstract class BaseTest {
 
     private static WebDriver driver;
 
-    LogsSteps logsSteps;
+    public LogsSteps logsSteps;
 
     public static WebDriver getDriver() {
         return driver;
     }
 
-    DriverFactory driverFactory=new DriverFactory();
-    PropertyReader propertyReader =new PropertyReader();
+    private DriverFactory driverFactory = new DriverFactory();
+    private PropertyReader propertyReader = new PropertyReader();
 
     @BeforeClass
-    public void setup() throws IOException {
+    public void setup() {
         driver = driverFactory.getDriver(propertyReader.getBrowser());
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        logsSteps = new LogsSteps(); }
+        logsSteps = new LogsSteps();
+    }
 
     @AfterClass
     public void tearDown() {
@@ -37,7 +37,8 @@ public abstract class BaseTest  {
 
     @DataProvider(name = "servers")
     public Object[] dataProviderMethod() {
-        return new Object[]{/*"5372805",*/"4883700"}; }
+        return new Object[]{/*"5372805",*/"4883700"};
+    }
 
 }
 

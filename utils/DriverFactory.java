@@ -21,8 +21,8 @@ public class DriverFactory {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless");
                 driver = new ChromeDriver(chromeOptions);
-
                 break;
+
             case IE:
                 file = new File(DRIVER_PATH + "IEDriverServer32.exe");
                 System.setProperty("webdriver.ie.driver", file.getAbsolutePath());

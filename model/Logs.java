@@ -26,5 +26,4 @@ public class Logs {
     public String getOnlineType() {
         return onlineType;
     }
-
 }

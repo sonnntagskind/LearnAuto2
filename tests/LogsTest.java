@@ -12,8 +12,7 @@ public class LogsTest extends BaseTest {
 
         logsSteps
                 .enterPage(serverID)
-                .printStatistics()
-//                .parseWebListsToStringLists()
+                .printServiceInfo()
                 .writeExcel(serverID)
         ;
     }
